@@ -20,8 +20,8 @@ public class UsuarioDao {
 
         try (Connection conexao = dataSource.getConnection()) {
             PreparedStatement stmt = conexao.prepareStatement("insert into t_nron_usuario (id_usuario, nome, em_usuario, " +
-                    "sen_hash_usuario, stt_usuario, dt_cadastro, id_acesso, id_departamento) values (seq_nron_id_usuario.NEXTVAL, " +
-                    "?, ?, ?, ?, ?, ?, ?)");
+                    "sen_hash_usuario, stt_usuario, dt_cadastro, id_acesso, id_departamento) values (seq_nron_usuario.NEXTVAL, " +
+                    "?, ?, ?, ?, ?, ?, ?)", new String[]{"id_usuario"});
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenhaHash());
@@ -35,7 +35,7 @@ public class UsuarioDao {
             //Recuperar o valor da chave gerada para o doce
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()){
-                usuario.setCodigo(rs.getInt(1));
+                usuario.setId(rs.getInt(1));
             }
         }
     }

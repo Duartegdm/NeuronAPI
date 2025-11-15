@@ -3,7 +3,7 @@ package com.neuron.model;
 import java.time.LocalDate;
 
 public class Usuario {
-    private int codigo;
+    private int id;
     private String nome;
     private String email;
     private String senhaHash;
@@ -12,12 +12,12 @@ public class Usuario {
     private int codigoAcesso;
     private int codigoDepartamento;
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

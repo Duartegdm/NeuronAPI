@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 
 public class CreateAcessoDto {
 
-    @NotBlank(message = "O tipo de acessi é obrigatório")
+    @NotBlank(message = "O tipo de acesso é obrigatório")
     @Size(max = 50, message = "Limite de caracteres excedido")
     private String tipoAcesso;
 

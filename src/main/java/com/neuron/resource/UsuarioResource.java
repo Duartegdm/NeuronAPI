@@ -38,7 +38,7 @@ public class UsuarioResource {
         Usuario usuario = service.criarUsuario(dto);
 
         URI uri = uriInfo.getAbsolutePathBuilder()
-                .path(String.valueOf(usuario.getCodigo())).build();
+                .path(String.valueOf(usuario.getId())).build();
 
         return Response.created(uri).entity(mapper.map(usuario, DetailUsuarioDto.class)).build();
 

@@ -6,10 +6,7 @@ import com.neuron.dto.acesso.DetailAcessoDto;
 import com.neuron.model.Acesso;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -18,6 +15,7 @@ import org.modelmapper.ModelMapper;
 
 import java.net.URI;
 import java.sql.SQLException;
+import java.util.List;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,5 +37,11 @@ public class AcessoResource {
                 .path(String.valueOf(acesso.getCodigo())).build();
 
         return Response.created(uri).entity(mapper.map(acesso, DetailAcessoDto.class)).build();
+    }
+
+    @GET
+    public List<DetailAcessoDto> listar() throws SQLException {
+        return acessoDao.listar().stream()
+                .map(a -> mapper.map(a, DetailAcessoDto.class)).toList();
     }
 }

@@ -3,7 +3,7 @@ package com.neuron.dto.usuario;
 import java.time.LocalDate;
 
 public class DetailUsuarioDto {
-    private int codigo;
+    private int id;
     private String nome;
     private String email;
     private boolean status;
@@ -11,12 +11,12 @@ public class DetailUsuarioDto {
     private int codigoAcesso;
     private int codigoDepartamento;
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
