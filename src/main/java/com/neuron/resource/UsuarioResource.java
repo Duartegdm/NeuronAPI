@@ -22,7 +22,7 @@ import java.sql.SQLException;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/usuario")
+@Path("/usuarios")
 public class UsuarioResource {
 
     @Inject

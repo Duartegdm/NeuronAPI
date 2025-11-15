@@ -19,7 +19,7 @@ import java.util.List;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/acesso")
+@Path("/acessos")
 public class AcessoResource {
     @Inject
     private AcessoDao acessoDao;

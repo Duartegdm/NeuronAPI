@@ -17,7 +17,7 @@ import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
 
-@Path("/departamento")
+@Path("/departamentos")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class DepartamentoResource {
