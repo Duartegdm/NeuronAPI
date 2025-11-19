@@ -1,5 +1,6 @@
 package com.neuron.dao;
 
+import com.neuron.exception.UserNotFoundException;
 import com.neuron.model.CatgEmocao;
 import com.neuron.model.Emocao;
 import com.neuron.model.NomeCatgEmocao;
@@ -53,6 +54,25 @@ public class UsuarioDao {
         }
     }
 
+    public Usuario buscarPorId(int idUsuario) throws SQLException {
+        try (Connection conexao = dataSource.getConnection()) {
+            PreparedStatement stmt = conexao.prepareStatement(
+                    "SELECT * FROM t_nron_usuario WHERE id_usuario = ?"
+            );
+
+            stmt.setInt(1, idUsuario);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapearUsuario(rs);
+            }
+
+            return null; // não encontrado
+        }
+    }
+
+
     public List<Usuario> listar() throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             Statement stmt = connection.createStatement();
@@ -94,12 +114,12 @@ public class UsuarioDao {
             int rows = stmt.executeUpdate();
 
             if (rows == 0) {
-                throw new RuntimeException("Usuário não encontrado para atualização. ID: " + usuario.getId());
+                throw new UserNotFoundException();
             }
         }
     }
 
-    public void deletar(int idUsuario) throws SQLException {
+    public void remover(int idUsuario) throws SQLException {
         try (Connection conexao = dataSource.getConnection()) {
             PreparedStatement stmt = conexao.prepareStatement(
                     "DELETE FROM t_nron_usuario WHERE id_usuario = ?"
@@ -110,12 +130,12 @@ public class UsuarioDao {
             int rows = stmt.executeUpdate();
 
             if (rows == 0) {
-                throw new RuntimeException("Usuário não encontrado para exclusão. ID: " + idUsuario);
+                throw new UserNotFoundException();
             }
         }
     }
 
-    public void deletar(String email) throws SQLException {
+    public void remover(String email) throws SQLException {
         try (Connection conexao = dataSource.getConnection()) {
             PreparedStatement stmt = conexao.prepareStatement(
                     "DELETE FROM t_nron_usuario WHERE em_usuario = ?"
@@ -125,7 +145,7 @@ public class UsuarioDao {
             int rows = stmt.executeUpdate();
 
             if (rows == 0) {
-                throw new RuntimeException("Usuário não encontrado para exclusão: " + email);
+                throw new UserNotFoundException();
             }
         }
     }

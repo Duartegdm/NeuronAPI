@@ -15,8 +15,8 @@ public class JwtService {
 
             String token = Jwt.issuer("neuron-api")
                     .subject(usuario.getEmail())
-                    .claim("id", usuario.getId())
-                    .claim("role", usuario.getCodigoAcesso())
+                    .claim("id", String.valueOf(usuario.getId()))
+                    .groups(String.valueOf(usuario.getCodigoAcesso()))
                     .expiresAt(Instant.now().plus(1, ChronoUnit.HOURS))
                     .sign();
 

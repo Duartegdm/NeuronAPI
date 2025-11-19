@@ -5,6 +5,7 @@ import com.neuron.dto.auth.RegisterDto;
 /*import com.neuron.exception.InvalidCredentialsException;*/
 import com.neuron.dto.usuario.UpdateUsuarioDto;
 import com.neuron.exception.InvalidCredentialsException;
+import com.neuron.exception.UserNotFoundException;
 import com.neuron.model.Usuario;
 import com.neuron.utils.PasswordUtils;
 import io.quarkus.elytron.security.common.BcryptUtil;
@@ -59,5 +60,19 @@ public class UsuarioService {
 
     public Usuario buscarPorEmail(String email) throws SQLException {
         return usuarioDao.buscarPorEmail(email);
+    }
+
+    public void remover(String email) throws SQLException {
+        if(usuarioDao.buscarPorEmail(email) == null) {
+            throw new UserNotFoundException();
+        }
+        usuarioDao.remover(email);
+    }
+
+    public void remover(int id) throws SQLException {
+        if(usuarioDao.buscarPorId(id) == null) {
+            throw new UserNotFoundException();
+        }
+        usuarioDao.remover(id);
     }
 }

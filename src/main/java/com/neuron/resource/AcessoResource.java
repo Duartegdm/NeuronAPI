@@ -4,6 +4,7 @@ import com.neuron.dao.AcessoDao;
 import com.neuron.dto.acesso.CreateAcessoDto;
 import com.neuron.dto.acesso.DetailAcessoDto;
 import com.neuron.model.Acesso;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -20,6 +21,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/acessos")
+@RolesAllowed({"1"})
 public class AcessoResource {
     @Inject
     private AcessoDao acessoDao;
