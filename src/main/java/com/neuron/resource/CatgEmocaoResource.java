@@ -1,10 +1,12 @@
 package com.neuron.resource;
 
 import com.neuron.dao.CatgEmocaoDao;
+import com.neuron.dao.EmocaoDao;
 import com.neuron.dto.categoriaEmocao.CreateCatgEmocaoDto;
 import com.neuron.dto.categoriaEmocao.DetailCategEmocao;
 import com.neuron.dto.emocao.DetailEmocaoDto;
 import com.neuron.model.CatgEmocao;
+import com.neuron.model.Emocao;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -45,4 +47,6 @@ public class CatgEmocaoResource {
         return catgEmocaoDao.listar().stream()
                 .map(e -> mapper.map(e, DetailCategEmocao.class)).toList();
     }
+
+
 }
