@@ -3,6 +3,7 @@ package com.neuron.service;
 import com.neuron.dao.UsuarioDao;
 import com.neuron.dto.auth.RegisterDto;
 /*import com.neuron.exception.InvalidCredentialsException;*/
+import com.neuron.dto.usuario.UpdateUsuarioDto;
 import com.neuron.exception.InvalidCredentialsException;
 import com.neuron.model.Usuario;
 import com.neuron.utils.PasswordUtils;
@@ -31,6 +32,20 @@ public class UsuarioService {
         usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
 
         usuarioDao.cadastrar(usuario);
+        return usuario;
+    }
+
+    public Usuario atualizar(UpdateUsuarioDto dto, int id) throws SQLException {
+        Usuario usuarioExistente = usuarioDao.buscarPorEmail(dto.getEmail());
+        if (usuarioExistente != null && usuarioExistente.getId() != id) {
+            throw new RuntimeException("Email já está em uso por outro usuário");
+        }
+
+        Usuario usuario = mapper.map(dto, Usuario.class);
+        usuario.setId(id);
+        usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
+
+        usuarioDao.atualizar(usuario);
         return usuario;
     }
 

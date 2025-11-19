@@ -1,13 +1,13 @@
-/* package com.neuron.dto.usuario;
+package com.neuron.dto.usuario;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+import jdk.jfr.BooleanFlag;
 import org.hibernate.validator.constraints.UniqueElements;
 
+import java.time.LocalDate;
 
-public class CreateUsuarioDto {
+
+public class UpdateUsuarioDto {
     @NotBlank(message = "O nome é obrigatório")
     @Size(max = 150, message = "Limite de caracteres excedido")
     private String nome;
@@ -16,6 +16,12 @@ public class CreateUsuarioDto {
     @Email(message = "O e-mail deve ser válido")
     @Size(max = 150, message = "Limite de caracteres excedido")
     private String email;
+
+    @BooleanFlag
+    private Boolean status;
+
+    @PastOrPresent
+    private LocalDate dataCadastro;
 
     @NotBlank(message = "A senha é obrigatória")
     @Size(max = 28, message = "Limite de caracteres excedido")
@@ -60,6 +66,22 @@ public class CreateUsuarioDto {
         this.codigoAcesso = codigoAcesso;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public @PastOrPresent LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(@PastOrPresent LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
     @NotNull(message = "O departamento é obrigatório")
     public int getCodigoDepartamento() {
         return codigoDepartamento;
@@ -69,4 +91,3 @@ public class CreateUsuarioDto {
         this.codigoDepartamento = codigoDepartamento;
     }
 }
-*/
