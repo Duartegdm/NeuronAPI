@@ -75,4 +75,18 @@ public class Usuario {
     public void setCodigoDepartamento(int codigoDepartamento) {
         this.codigoDepartamento = codigoDepartamento;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", senhaHash='" + senhaHash + '\'' +
+                ", statusAtivo=" + statusAtivo +
+                ", dataCadastro=" + dataCadastro +
+                ", codigoAcesso=" + codigoAcesso +
+                ", codigoDepartamento=" + codigoDepartamento +
+                '}';
+    }
 }

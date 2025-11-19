@@ -1,4 +1,4 @@
-package com.neuron.auth;
+package com.neuron.service;
 import io.quarkus.elytron.security.common.BcryptUtil;
 
 public class AuthService {

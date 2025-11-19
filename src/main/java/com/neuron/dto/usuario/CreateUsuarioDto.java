@@ -1,4 +1,4 @@
-package com.neuron.dto.usuario;
+/* package com.neuron.dto.usuario;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -69,3 +69,4 @@ public class CreateUsuarioDto {
         this.codigoDepartamento = codigoDepartamento;
     }
 }
+*/

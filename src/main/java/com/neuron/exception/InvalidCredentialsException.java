@@ -1,4 +1,10 @@
 package com.neuron.exception;
 
-public class InvalidCredentialsException {
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
+
+public class InvalidCredentialsException extends WebApplicationException {
+    public InvalidCredentialsException() {
+        super("Credenciais inválidas", Response.Status.UNAUTHORIZED);
+    }
 }
