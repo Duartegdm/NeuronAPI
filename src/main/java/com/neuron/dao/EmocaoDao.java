@@ -58,4 +58,53 @@ public class EmocaoDao {
             return emocoes;
         }
     }
+
+    public List<Emocao> listarPorCategoria(int idCategoria) throws SQLException {
+        String sql = """
+        SELECT 
+            ID_EMOCAO,
+            NM_EMOCAO,
+            COR_EMOCAO,
+            ID_CATG_EMOCAO
+        FROM T_NRON_EMOCAO
+        WHERE ID_CATG_EMOCAO = ?
+        ORDER BY NM_EMOCAO
+    """;
+
+        List<Emocao> lista = new ArrayList<>();
+
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setInt(1, idCategoria);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Emocao e = new Emocao();
+                e.setId(rs.getInt("ID_EMOCAO"));
+                e.setNome(rs.getString("NM_EMOCAO"));
+                e.setCor(rs.getString("COR_EMOCAO"));
+                e.setCodigoCategEmocao(rs.getInt("ID_CATG_EMOCAO"));
+                lista.add(e);
+            }
+        }
+
+        return lista;
+    }
+
+
+    public String buscarNomeEmocao(int id) throws SQLException {
+        String sql = "SELECT NM_EMOCAO FROM T_NRON_EMOCAO WHERE ID_EMOCAO = ?";
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) return rs.getString("NM_EMOCAO");
+            return null;
+        }
+    }
+
 }

@@ -47,4 +47,15 @@ public class EmocaoResource {
         return emocaoDao.listar().stream()
                 .map(e -> mapper.map(e, DetailEmocaoDto.class)).toList();
     }
+
+    @GET
+    @Path("/{idCategoria}")
+    public List<DetailEmocaoDto> listarPorCategoria(@PathParam("idCategoria") int idCategoria)
+            throws SQLException {
+
+        return emocaoDao.listarPorCategoria(idCategoria)
+                .stream()
+                .map(e -> mapper.map(e, DetailEmocaoDto.class))
+                .toList();
+    }
 }
