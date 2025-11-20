@@ -24,7 +24,7 @@ public class UsuarioDao {
         try (Connection conexao = dataSource.getConnection()) {
             PreparedStatement stmt = conexao.prepareStatement("insert into t_nron_usuario (id_usuario, nm_usuario, em_usuario, " +
                     "sen_hash_usuario, stt_usuario, id_acesso, id_departamento) values (seq_nron_usuario.NEXTVAL, " +
-                    "?, ?, ?, ?, ?, ?, )", new String[]{"id_usuario"});
+                    "?, ?, ?, ?, ?, ?)", new String[]{"id_usuario"});
 
             System.out.println("Usuario no DAO: "+usuario);
 
