@@ -20,9 +20,6 @@ public class UpdateUsuarioDto {
     @BooleanFlag
     private Boolean status;
 
-    @PastOrPresent
-    private LocalDate dataCadastro;
-
     @NotBlank(message = "A senha é obrigatória")
     @Size(max = 28, message = "Limite de caracteres excedido")
     private String senha;
@@ -72,14 +69,6 @@ public class UpdateUsuarioDto {
 
     public void setStatus(Boolean status) {
         this.status = status;
-    }
-
-    public @PastOrPresent LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(@PastOrPresent LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
     }
 
     @NotNull(message = "O departamento é obrigatório")

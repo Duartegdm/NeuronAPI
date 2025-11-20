@@ -7,7 +7,6 @@ public class DetailUsuarioDto {
     private String nome;
     private String email;
     private boolean status;
-    private LocalDate dataCadastro;
     private int codigoAcesso;
     private int codigoDepartamento;
 
@@ -41,14 +40,6 @@ public class DetailUsuarioDto {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
     }
 
     public int getCodigoAcesso() {

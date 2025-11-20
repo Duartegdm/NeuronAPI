@@ -8,7 +8,6 @@ public class Usuario {
     private String email;
     private String senhaHash;
     private boolean statusAtivo;
-    private LocalDate dataCadastro;
     private int codigoAcesso;
     private int codigoDepartamento;
 
@@ -52,14 +51,6 @@ public class Usuario {
         this.statusAtivo = statusAtivo;
     }
 
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
     public int getCodigoAcesso() {
         return codigoAcesso;
     }
@@ -84,7 +75,6 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", senhaHash='" + senhaHash + '\'' +
                 ", statusAtivo=" + statusAtivo +
-                ", dataCadastro=" + dataCadastro +
                 ", codigoAcesso=" + codigoAcesso +
                 ", codigoDepartamento=" + codigoDepartamento +
                 '}';

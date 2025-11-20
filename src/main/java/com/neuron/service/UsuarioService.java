@@ -29,7 +29,6 @@ public class UsuarioService {
         Usuario usuario = mapper.map(dto, Usuario.class);
 
         usuario.setStatusAtivo(true);
-        usuario.setDataCadastro(LocalDate.now());
         usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
 
         usuarioDao.cadastrar(usuario);

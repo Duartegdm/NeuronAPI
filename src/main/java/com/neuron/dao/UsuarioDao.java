@@ -23,8 +23,8 @@ public class UsuarioDao {
 
         try (Connection conexao = dataSource.getConnection()) {
             PreparedStatement stmt = conexao.prepareStatement("insert into t_nron_usuario (id_usuario, nm_usuario, em_usuario, " +
-                    "sen_hash_usuario, stt_usuario, dt_cad_usuario, id_acesso, id_departamento) values (seq_nron_usuario.NEXTVAL, " +
-                    "?, ?, ?, ?, ?, ?, ?)", new String[]{"id_usuario"});
+                    "sen_hash_usuario, stt_usuario, id_acesso, id_departamento) values (seq_nron_usuario.NEXTVAL, " +
+                    "?, ?, ?, ?, ?, ?, )", new String[]{"id_usuario"});
 
             System.out.println("Usuario no DAO: "+usuario);
 
@@ -99,7 +99,6 @@ public class UsuarioDao {
                     + "em_usuario = ?, "
                     + "stt_usuario = ?, "
                     + "sen_hash_usuario = ?, "
-                    + "dt_cad_usuario = ?, "
                     + "id_acesso = ?, "
                     + "id_departamento = ? "
                     + "WHERE id_usuario = ?";
@@ -170,10 +169,9 @@ public class UsuarioDao {
         stmt.setString(2, usuario.getEmail());
         stmt.setBoolean(3, usuario.isStatusAtivo());
         stmt.setString(4, usuario.getSenhaHash());
-        stmt.setDate(5, Date.valueOf(usuario.getDataCadastro()));
-        stmt.setInt(6, usuario.getCodigoAcesso());
-        stmt.setInt(7, usuario.getCodigoDepartamento());
-        stmt.setInt(8, usuario.getId());
+        stmt.setInt(5, usuario.getCodigoAcesso());
+        stmt.setInt(6, usuario.getCodigoDepartamento());
+        stmt.setInt(7, usuario.getId());
     }
 
     private void setInsertColumns(Usuario usuario, PreparedStatement stmt) throws SQLException {
@@ -181,8 +179,7 @@ public class UsuarioDao {
         stmt.setString(2, usuario.getEmail());
         stmt.setString(3, usuario.getSenhaHash());
         stmt.setBoolean(4, usuario.isStatusAtivo());
-        stmt.setDate(5, Date.valueOf(usuario.getDataCadastro()));
-        stmt.setInt(6, usuario.getCodigoAcesso());
-        stmt.setInt(7, usuario.getCodigoDepartamento());
+        stmt.setInt(5, usuario.getCodigoAcesso());
+        stmt.setInt(6, usuario.getCodigoDepartamento());
     }
 }

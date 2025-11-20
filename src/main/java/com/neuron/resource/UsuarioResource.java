@@ -38,6 +38,14 @@ public class UsuarioResource {
                 .map(u -> mapper.map(u, DetailUsuarioDto.class)).toList();
     }
 
+
+    @GET
+    @Path("/{id}")
+    @PermitAll
+    public Usuario listarPorId(@PathParam("id") int id) throws SQLException{
+        return usuarioDao.buscarPorId(id);
+    }
+
     @PUT
     @Path("/{id}")
     @PermitAll
