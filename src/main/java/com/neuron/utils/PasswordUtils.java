@@ -8,7 +8,6 @@ public class PasswordUtils {
     }
 
     public static Boolean verify(String senha, String senhaHash) {
-        System.out.println(senha + senhaHash);
         return BcryptUtil.matches(senha, senhaHash);
     }
 }
