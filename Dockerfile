@@ -1,16 +1,28 @@
+# Stage 1: Build
+FROM eclipse-temurin:21-jdk-alpine as builder
+
+WORKDIR /app
+
+# Copiar arquivos do Maven
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+
+# Copiar código fonte
+COPY src src
+
+# Dar permissão e fazer build
+RUN chmod +x mvnw && \
+    ./mvnw clean package -Dquarkus.package.type=uber-jar -DskipTests
+
+# Stage 2: Runtime
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-# Copiar o JAR
-COPY target/neuron-1.0.0-SNAPSHOT-runner.jar app.jar
+# Copiar o JAR do stage de build
+COPY --from=builder /app/target/*-runner.jar app.jar
 
-# Expor a porta
 EXPOSE 8080
 
-# Health check (opcional)
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
-
-# Comando para executar
 ENTRYPOINT ["java", "-jar", "app.jar"]
