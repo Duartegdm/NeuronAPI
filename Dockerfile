@@ -3,7 +3,7 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copiar o JAR
-COPY target/*-runner.jar app.jar
+COPY target/neuron-1.0.0-SNAPSHOT-runner.jar app.jar
 
 # Expor a porta
 EXPOSE 8080
