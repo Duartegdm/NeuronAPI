@@ -7,6 +7,7 @@ import com.neuron.dto.usuario.UpdateUsuarioDto;
 import com.neuron.model.Usuario;
 import com.neuron.service.UsuarioService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -21,6 +22,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/usuarios")
+@PermitAll
 public class UsuarioResource {
 
     @Inject
@@ -41,14 +43,12 @@ public class UsuarioResource {
 
     @GET
     @Path("/{id}")
-    @PermitAll
     public Usuario listarPorId(@PathParam("id") int id) throws SQLException{
         return usuarioDao.buscarPorId(id);
     }
 
     @PUT
     @Path("/{id}")
-    @PermitAll
     public Response atualizar(@PathParam("id") int id, @Valid UpdateUsuarioDto dto) throws SQLException {
         System.out.println("Usuario AtualizarDao: " + usuarioDao);
         Usuario usuario = service.atualizar(dto, id);

@@ -5,6 +5,7 @@ import com.neuron.dto.registroEmocao.DetailRegistroEmocaoDto;
 import com.neuron.dto.registroEmocao.ListRegistroEmocaoDto;
 import com.neuron.model.RegistroEmocao;
 import com.neuron.service.RegistroEmocaoService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -20,6 +21,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/registro-emocao")
+@PermitAll
 public class RegistroEmocaoResource {
 
     @Inject

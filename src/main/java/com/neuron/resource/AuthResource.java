@@ -9,6 +9,7 @@ import com.neuron.service.JwtService;
 import com.neuron.service.UsuarioService;
 import io.quarkus.security.Authenticated;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -21,6 +22,7 @@ import java.sql.SQLException;
 @Path("/auth")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed({"1"})
 public class AuthResource {
 
     @Inject

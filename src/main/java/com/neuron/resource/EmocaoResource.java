@@ -6,6 +6,7 @@ import com.neuron.dto.acesso.DetailAcessoDto;
 import com.neuron.dto.emocao.CreateEmocaoDto;
 import com.neuron.dto.emocao.DetailEmocaoDto;
 import com.neuron.model.Emocao;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -21,6 +22,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/emocoes")
+@PermitAll
 public class EmocaoResource {
 
     @Inject

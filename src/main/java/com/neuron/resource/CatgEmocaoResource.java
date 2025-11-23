@@ -7,6 +7,7 @@ import com.neuron.dto.categoriaEmocao.DetailCategEmocao;
 import com.neuron.dto.emocao.DetailEmocaoDto;
 import com.neuron.model.CatgEmocao;
 import com.neuron.model.Emocao;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -22,6 +23,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/catg-emocoes")
+@RolesAllowed({"1"})
 public class CatgEmocaoResource {
 
     @Inject

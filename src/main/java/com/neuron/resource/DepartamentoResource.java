@@ -4,6 +4,7 @@ import com.neuron.dao.DepartamentoDao;
 import com.neuron.dto.departamento.CreateDepartamentoDto;
 import com.neuron.dto.departamento.DetailDepartamentoDto;
 import com.neuron.model.Departamento;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -20,6 +21,7 @@ import java.util.List;
 @Path("/departamentos")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@RolesAllowed({"1"})
 public class DepartamentoResource {
     @Inject
     DepartamentoDao dao;

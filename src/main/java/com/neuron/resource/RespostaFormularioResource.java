@@ -3,6 +3,7 @@ package com.neuron.resource;
 import com.neuron.dto.respostaFormulario.CreateRespostaFormularioDto;
 import com.neuron.model.RespostaFormulario;
 import com.neuron.service.RespostaFormularioService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -16,6 +17,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/resposta-formulario")
+@PermitAll
 public class RespostaFormularioResource {
 
     @Inject
