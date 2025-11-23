@@ -22,7 +22,7 @@ import java.sql.SQLException;
 @Path("/auth")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@RolesAllowed({"1"})
+@PermitAll
 public class AuthResource {
 
     @Inject
