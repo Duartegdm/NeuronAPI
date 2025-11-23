@@ -19,7 +19,7 @@ public class DepartamentoDao {
 
     public void cadastrar(Departamento departamento) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement("insert into t_nron_departamento (id_departamento, nome_departamento, ds_departamento) " +
+            PreparedStatement stmt = connection.prepareStatement("insert into t_nron_departamento (id_departamento, nm_departamento, ds_departamento) " +
                     "values (seq_nron_departamento.NEXTVAL, ?, ?)", new String[]{"id_departamento"});
             stmt.setString(1, departamento.getNome());
             stmt.setString(2, departamento.getDescricao());

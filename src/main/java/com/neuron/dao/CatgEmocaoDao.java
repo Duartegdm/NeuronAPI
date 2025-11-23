@@ -20,7 +20,7 @@ public class CatgEmocaoDao {
 
     public void cadastrar(CatgEmocao catgEmocao) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement("insert into t_nron_catg_emocao (id_catg_emocao, nome_catg_emocao)" +
+            PreparedStatement stmt = connection.prepareStatement("insert into t_nron_catg_emocao (id_catg_emocao, nm_catg_emocao)" +
                     "values (SEQ_NRON_CATG_EMOCAO.NEXTVAL, ?)", new String[]{"id_catg_emocao"});
             stmt.setString(1, catgEmocao.getNome().name());
 
