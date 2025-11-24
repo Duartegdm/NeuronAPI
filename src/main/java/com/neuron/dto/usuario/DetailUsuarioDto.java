@@ -6,6 +6,7 @@ public class DetailUsuarioDto {
     private int id;
     private String nome;
     private String email;
+    private String senha;
     private boolean status;
     private int codigoAcesso;
     private int codigoDepartamento;
@@ -16,6 +17,13 @@ public class DetailUsuarioDto {
 
     public void setId(int id) {
         this.id = id;
+    }
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getNome() {

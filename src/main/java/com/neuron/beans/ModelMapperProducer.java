@@ -4,6 +4,7 @@ import com.neuron.dto.auth.RegisterDto;
 import com.neuron.dto.categoriaEmocao.CreateCatgEmocaoDto;
 import com.neuron.dto.departamento.DetailDepartamentoDto;
 import com.neuron.dto.emocao.CreateEmocaoDto;
+import com.neuron.dto.usuario.DetailUsuarioDto;
 import com.neuron.dto.usuario.UpdateUsuarioDto;
 import com.neuron.model.CatgEmocao;
 import com.neuron.model.Departamento;
@@ -47,6 +48,10 @@ public class ModelMapperProducer {
 
         mapper.typeMap(CreateEmocaoDto.class, Emocao.class).addMappings(m ->{
             m.map(CreateEmocaoDto::getCodigoCatgEmocao, Emocao::setCodigoCategEmocao);
+        });
+
+        mapper.typeMap(Usuario.class, DetailUsuarioDto.class).addMappings(m ->{
+            m.map(Usuario::getSenhaHash, DetailUsuarioDto::setSenha);
         });
 
         return mapper;

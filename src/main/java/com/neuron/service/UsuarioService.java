@@ -29,7 +29,8 @@ public class UsuarioService {
         Usuario usuario = mapper.map(dto, Usuario.class);
 
         usuario.setStatusAtivo(true);
-        usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
+//        usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
+        usuario.setSenhaHash(dto.getSenha());
 
         usuarioDao.cadastrar(usuario);
         return usuario;
@@ -43,7 +44,8 @@ public class UsuarioService {
 
         Usuario usuario = mapper.map(dto, Usuario.class);
         usuario.setId(id);
-        usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
+//        usuario.setSenhaHash(PasswordUtils.hash(dto.getSenha()));
+        usuario.setSenhaHash(dto.getSenha());
 
         usuarioDao.atualizar(usuario);
         return usuario;
