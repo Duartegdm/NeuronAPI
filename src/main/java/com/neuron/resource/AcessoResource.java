@@ -21,7 +21,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/acessos")
-@RolesAllowed({"1"})
+//@RolesAllowed({"1"})
 public class AcessoResource {
     @Inject
     private AcessoDao acessoDao;

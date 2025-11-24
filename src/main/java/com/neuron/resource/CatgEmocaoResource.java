@@ -23,7 +23,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/catg-emocoes")
-@RolesAllowed({"1"})
+//@RolesAllowed({"1"})
 public class CatgEmocaoResource {
 
     @Inject

@@ -17,7 +17,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/resposta-formulario")
-@PermitAll
+//@PermitAll
 public class RespostaFormularioResource {
 
     @Inject

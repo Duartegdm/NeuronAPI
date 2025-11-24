@@ -22,7 +22,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/emocoes")
-@PermitAll
+//@PermitAll
 public class EmocaoResource {
 
     @Inject

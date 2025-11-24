@@ -21,7 +21,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/registro-emocao")
-@PermitAll
+//@PermitAll
 public class RegistroEmocaoResource {
 
     @Inject

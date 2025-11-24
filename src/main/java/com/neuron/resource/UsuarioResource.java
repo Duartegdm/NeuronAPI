@@ -11,10 +11,13 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
 import org.modelmapper.ModelMapper;
 
+import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,7 +25,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/usuarios")
-@PermitAll
+//@PermitAll
 public class UsuarioResource {
 
     @Inject
@@ -43,7 +46,7 @@ public class UsuarioResource {
 
     @GET
     @Path("/{id}")
-    public Usuario listarPorId(@PathParam("id") int id) throws SQLException{
+    public Usuario listarPorId(@PathParam("id") int id) throws SQLException {
         return usuarioDao.buscarPorId(id);
     }
 
@@ -74,4 +77,14 @@ public class UsuarioResource {
         return Response.noContent().build();
     }
 
+    @POST
+    @PermitAll
+    public Response create(@Valid RegisterDto dto, @Context UriInfo uriInfo) throws SQLException {
+        Usuario usuario = service.registrar(dto);
+
+        URI uri = uriInfo.getAbsolutePathBuilder()
+                .path(String.valueOf(usuario.getId())).build();
+
+        return Response.created(uri).entity(mapper.map(usuario, DetailUsuarioDto.class)).build();
+    }
 }

@@ -21,7 +21,7 @@ import java.util.List;
 @Path("/departamentos")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@RolesAllowed({"1"})
+//@RolesAllowed({"1"})
 public class DepartamentoResource {
     @Inject
     DepartamentoDao dao;

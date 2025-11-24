@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Path("/debug")
-@PermitAll
+//@PermitAll
 public class DebugResource {
 
     @GET

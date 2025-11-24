@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.Response;
 import java.time.Instant;
 
 @Path("/health")
-@PermitAll
+//@PermitAll
 public class HealthResource {
 
     @GET

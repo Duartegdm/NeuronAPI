@@ -49,13 +49,13 @@ public class UsuarioService {
         return usuario;
     }
 
-    public Usuario autenticar(String email, String senha) throws SQLException {
-        Usuario usuario = usuarioDao.buscarPorEmail(email);
-        if (!PasswordUtils.verify(senha, usuario.getSenhaHash())) {
-            throw new InvalidCredentialsException();
-        }
-        return usuario;
-    }
+//    public Usuario autenticar(String email, String senha) throws SQLException {
+//        Usuario usuario = usuarioDao.buscarPorEmail(email);
+//        if (!PasswordUtils.verify(senha, usuario.getSenhaHash())) {
+//            throw new InvalidCredentialsException();
+//        }
+//        return usuario;
+//    }
 
     public Usuario buscarPorEmail(String email) throws SQLException {
         return usuarioDao.buscarPorEmail(email);
